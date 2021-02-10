@@ -95,3 +95,8 @@ php artisan admin:import wechat-work-push
 
 - 接口地址为`http://{www.abc.com}/push/{推送密钥}`，标题为`title`不可控，内容为`content`可不传。 示例：`get`
   地址为`http://{www.abc.com}/push/secretSecret?title=测试标题&content=测试内容`
+
+## 内部调用支持
+
+- 引用此Trait类`\Asundust\WechatWorkPush\Http\Traits\SendMessageTrait`。
+- 使用默认配置发送`defaultSend()`，使用自定配置发送`send()`，具体入参看方法。

@@ -40,6 +40,9 @@ class WechatWorkPushHandleController extends Controller
                 ];
             } else {
                 $config = WechatWorkPushConfig::firstOrNew([]);
+                if (!$config->is_complete) {
+                    return ['code' => 1, 'message' => '系统配置错误'];
+                }
                 $config = [
                     'corp_id' => $config->corp_id,
                     'agent_id' => $config->agent_id,
