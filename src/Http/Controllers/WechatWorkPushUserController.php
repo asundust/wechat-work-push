@@ -80,14 +80,15 @@ class WechatWorkPushUserController extends AdminController
 
         $grid->actions(function (Actions $actions) {
             $actions->disableView();
-            $actions->add(new SendTestMessage);
+            $actions->add(new SendTestMessage());
         });
 
         $grid->model()->collection(function (Collection $collection) {
             foreach ($collection as $user) {
-                $user->api_address_show = config('app.url') . '/push/***';
-                $user->api_address = config('app.url') . '/push/' . $user->sc_secret . '?title=我是标题&content=我是内容(可不填)';
+                $user->api_address_show = config('app.url').'/push/***';
+                $user->api_address = config('app.url').'/push/'.$user->sc_secret.'?title=我是标题&content=我是内容(可不填)';
             }
+
             return $collection;
         });
 

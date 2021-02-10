@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 
 /**
- * Asundust\WechatWorkPush\Models\WechatWorkPushConfig
+ * Asundust\WechatWorkPush\Models\WechatWorkPushConfig.
  *
  * @property int         $id
  * @property string|null $corp_id     企业ID
  * @property string|null $agent_id    应用ID/agent_id
  * @property string|null $secret      应用Secret
- * @property-read bool   $is_complete
+ * @property bool        $is_complete
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  * @mixin Eloquent
