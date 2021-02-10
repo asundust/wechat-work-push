@@ -17,11 +17,11 @@ class WechatWorkPushServiceProvider extends ServiceProvider
         }
 
         if ($this->app->runningInConsole()) {
-            $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
+            $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         }
 
         $this->app->booted(function () {
-            WechatWorkPush::routes(__DIR__ . '/../routes/web.php');
+            WechatWorkPush::routes(__DIR__.'/../routes/web.php');
         });
 
         $attributes = array_merge(
@@ -30,6 +30,6 @@ class WechatWorkPushServiceProvider extends ServiceProvider
             ],
             WechatWorkPush::config('route', [])
         );
-        Route::group($attributes, __DIR__ . '/../routes/push.php');
+        Route::group($attributes, __DIR__.'/../routes/push.php');
     }
 }

@@ -13,7 +13,6 @@ use Illuminate\Routing\Controller;
 class WechatWorkPushConfigController extends Controller
 {
     /**
-     * @param Content $content
      * @return Content
      */
     public function index(Content $content)
@@ -35,7 +34,6 @@ class WechatWorkPushConfigController extends Controller
     }
 
     /**
-     * @param Request $request
      * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function update(Request $request)
@@ -48,6 +46,7 @@ class WechatWorkPushConfigController extends Controller
         foreach ($data as $value) {
             if (!$value) {
                 admin_toastr('请填写完整配置', 'error');
+
                 return back()->withInput();
             }
         }
@@ -56,6 +55,7 @@ class WechatWorkPushConfigController extends Controller
         $config->fill($data)->save();
 
         admin_toastr('保存成功');
+
         return redirect(admin_url('wechatWorkPushConfig'));
     }
 }
