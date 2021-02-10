@@ -2,6 +2,8 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 ======
 > 无需公众号，不需要安装企业微信客户端，低成本推送消息解决方案
 
+![StyleCI build status](https://github.styleci.io/repos/337583331/shield) 
+
 ## 前言
 
 灵感启发Server酱，这边只是一个简单的实现。
