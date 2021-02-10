@@ -4,6 +4,9 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 
 ![StyleCI build status](https://github.styleci.io/repos/337583331/shield) 
 
+<a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/dt/asundust/wechat-work-push" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/v/asundust/wechat-work-push" alt="Latest Stable Version"></a>
+
 ## 前言
 
 灵感启发Server酱，这边只是一个简单的实现。
