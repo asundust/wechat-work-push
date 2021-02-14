@@ -48,6 +48,7 @@ class WechatWorkPushHandleController extends Controller
                     'secret' => $config->secret,
                 ];
             }
+
             return $this->send($config, $user->name, $title, $content);
         }
 
