@@ -48,9 +48,7 @@ class WechatWorkPushHandleController extends Controller
                     'secret' => $config->secret,
                 ];
             }
-            $result = $this->send($config, $user->name, $title, $content);
-
-            return ['code' => 0, 'message' => 'success', 'data' => $result];
+            return $this->send($config, $user->name, $title, $content);
         }
 
         return ['code' => 1, 'message' => 'secret验证失败'];
