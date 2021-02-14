@@ -11,6 +11,10 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 
 灵感启发Server酱，这边只是一个简单的实现。
 
+## 客户端支持
+
+- Laravel版 [https://github.com/asundust/push-laravel](https://github.com/asundust/push-laravel)
+
 ## 功能介绍
 
 目前版本支持灵活设置
