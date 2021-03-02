@@ -14,7 +14,7 @@ class WechatWorkPushHandleController extends Controller
 
     /**
      * @param $secret
-     * @return array
+     *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\RuntimeException
      */
