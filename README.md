@@ -19,6 +19,7 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 
 目前版本支持灵活设置
 
+- 支持入参标题、内容、链接、链接标题
 - 一个【企业微信应用】的消息可推送【单个账号/全部人员】）
 - 【单个账号/全部人员】可设置独立的【企业微信应用】配置
 
@@ -124,8 +125,10 @@ php artisan admin:import wechat-work-push
 
 - 默认路由支持`get`和`post`，记得在`VerifyCsrfToken`里的`except`添加`push/*`，以便支持`post`接口请求。
 
-- 接口地址为`http://{www.abc.com}/push/{推送密钥}`，标题为`title`不可控，内容为`content`可不传。 示例：`get`
-  地址为`http://{www.abc.com}/push/secretSecret?title=测试标题&content=测试内容`
+- 接口地址为`http://{www.abc.com}/push/{推送密钥}`，标题为`title`不可空，内容为`content`可不传，链接为`url`可不传，链接标题为`url_title`可不传。 示例：`get`
+  地址为`http://{www.abc.com}/push/secretSecret?title=测试标题&content=测试内容&url=https://www.baidu.com&url_title=我是百度的测试链接`
+
+- 传入不合法的`url`可能会导致发送请求超时，不知为何，建议自行测试。
 
 ## 内部调用支持
 

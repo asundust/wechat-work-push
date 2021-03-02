@@ -10,21 +10,26 @@ trait SendMessageTrait
     /**
      * 使用自定配置发送消息.
      *
-     * @param array       $config  配置 ['corp_id' => 'xxx', 'agent_id' => 'xxx', 'secret' => 'xxx'];
-     * @param string      $name    用户
-     * @param string      $title   标题
-     * @param string|null $content 内容
+     * @param array       $config   配置 ['corp_id' => 'xxx', 'agent_id' => 'xxx', 'secret' => 'xxx'];
+     * @param string      $name     用户
+     * @param string      $title    标题
+     * @param string|null $content  内容
+     * @param string|null $url      链接
+     * @param string|null $urlTitle 链接标题
      *
-     * @return mixed
+     * @return array
      *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\RuntimeException
      */
-    public function send(array $config, string $name, string $title, ?string $content = null): array
+    public function send(array $config, string $name, string $title, ?string $content = null, ?string $url = null, ?string $urlTitle = null): array
     {
         $message = $title;
         if ($content) {
-            $message .= "\n\n".$content;
+            $message .= "\n\n" . $content;
+        }
+        if ($url) {
+            $message .= "\n\n" . '<a href="' . $url . '">' . ($urlTitle ?: $url) . '</a>';
         }
         $messenger = Factory::work($config)->messenger;
         $result = $messenger->ofAgent($config['agent_id'])->message($message)->toUser($name ?? '@all')->send();
@@ -38,14 +43,18 @@ trait SendMessageTrait
     /**
      * 使用默认配置发送消息.
      *
-     * @param string      $name    用户
-     * @param string      $title   标题
-     * @param string|null $content 内容
+     * @param string      $name     用户
+     * @param string      $title    标题
+     * @param string|null $content  内容
+     * @param string|null $url      链接
+     * @param string|null $urlTitle 链接标题
+     *
+     * @return array
      *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\RuntimeException
      */
-    public function defaultSend(string $name, string $title, ?string $content = null): array
+    public function defaultSend(string $name, string $title, ?string $content = null, ?string $url = null, ?string $urlTitle = null): array
     {
         $config = WechatWorkPushConfig::firstOrNew([]);
         if (!$config->is_complete) {
@@ -57,6 +66,6 @@ trait SendMessageTrait
             'secret' => $config->secret,
         ];
 
-        return $this->send($config, $name, $title, $content);
+        return $this->send($config, $name, $title, $content, $url, $urlTitle);
     }
 }
