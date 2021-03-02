@@ -17,8 +17,6 @@ trait SendMessageTrait
      * @param string|null $url      链接
      * @param string|null $urlTitle 链接标题
      *
-     * @return array
-     *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\RuntimeException
      */
@@ -26,10 +24,10 @@ trait SendMessageTrait
     {
         $message = $title;
         if ($content) {
-            $message .= "\n\n" . $content;
+            $message .= "\n\n".$content;
         }
         if ($url) {
-            $message .= "\n\n" . '<a href="' . $url . '">' . ($urlTitle ?: $url) . '</a>';
+            $message .= "\n\n".'<a href="'.$url.'">'.($urlTitle ?: $url).'</a>';
         }
         $messenger = Factory::work($config)->messenger;
         $result = $messenger->ofAgent($config['agent_id'])->message($message)->toUser($name ?? '@all')->send();
@@ -48,8 +46,6 @@ trait SendMessageTrait
      * @param string|null $content  内容
      * @param string|null $url      链接
      * @param string|null $urlTitle 链接标题
-     *
-     * @return array
      *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \EasyWeChat\Kernel\Exceptions\RuntimeException
