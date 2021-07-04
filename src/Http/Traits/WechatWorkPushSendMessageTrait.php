@@ -6,20 +6,18 @@ use Asundust\WechatWorkPush\Models\WechatWorkPushConfig;
 use EasyWeChat\Factory;
 
 /**
- * Trait WechatWorkPushSendMessageTrait
- *
- * @package Asundust\WechatWorkPush\Http\Traits
+ * Trait WechatWorkPushSendMessageTrait.
  */
 trait WechatWorkPushSendMessageTrait
 {
     /**
      * 使用自定配置发送消息.
      *
-     * @param array $config 配置 ['corp_id' => 'xxx', 'agent_id' => 'xxx', 'secret' => 'xxx'];
-     * @param string $name 用户
-     * @param string $title 标题
-     * @param string|null $content 内容
-     * @param string|null $url 链接
+     * @param array       $config   配置 ['corp_id' => 'xxx', 'agent_id' => 'xxx', 'secret' => 'xxx'];
+     * @param string      $name     用户
+     * @param string      $title    标题
+     * @param string|null $content  内容
+     * @param string|null $url      链接
      * @param string|null $urlTitle 链接标题
      *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
@@ -29,10 +27,10 @@ trait WechatWorkPushSendMessageTrait
     {
         $message = $title;
         if ($content) {
-            $message .= "\n\n" . $content;
+            $message .= "\n\n".$content;
         }
         if ($url) {
-            $message .= "\n\n" . '<a href="' . $url . '">' . ($urlTitle ?: $url) . '</a>';
+            $message .= "\n\n".'<a href="'.$url.'">'.($urlTitle ?: $url).'</a>';
         }
         $messenger = Factory::work($config)->messenger;
         $result = $messenger->ofAgent($config['agent_id'])->message($message)->toUser($name ?? '@all')->send();
@@ -46,10 +44,10 @@ trait WechatWorkPushSendMessageTrait
     /**
      * 使用默认配置发送消息.
      *
-     * @param string $name 用户
-     * @param string $title 标题
-     * @param string|null $content 内容
-     * @param string|null $url 链接
+     * @param string      $name     用户
+     * @param string      $title    标题
+     * @param string|null $content  内容
+     * @param string|null $url      链接
      * @param string|null $urlTitle 链接标题
      *
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
