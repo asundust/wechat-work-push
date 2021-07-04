@@ -2,14 +2,14 @@
 
 namespace Asundust\WechatWorkPush\Http\Actions;
 
-use Asundust\WechatWorkPush\Http\Traits\SendMessageTrait;
+use Asundust\WechatWorkPush\Http\Traits\WechatWorkPushSendMessageTrait;
 use Asundust\WechatWorkPush\Models\WechatWorkPushConfig;
 use Asundust\WechatWorkPush\Models\WechatWorkPushUser as WechatWorkPushUserModel;
 use Encore\Admin\Actions\RowAction;
 
 class SendTestMessage extends RowAction
 {
-    use SendMessageTrait;
+    use WechatWorkPushSendMessageTrait;
 
     public $name = '发送测试消息';
 
@@ -41,12 +41,12 @@ class SendTestMessage extends RowAction
             $type = '默认';
         }
 
-        $title = '当前使用的【'.$type.'配置】企业微信通道发送的测试消息';
+        $title = '当前使用的【' . $type . '配置】企业微信通道发送的测试消息';
         $result = $this->send($config, $user->name, $title);
         if (0 == $result['code']) {
-            return $this->response()->success('使用【'.$type.'配置】企业微信通道发送消息成功');
+            return $this->response()->success('使用【' . $type . '配置】企业微信通道发送消息成功');
         }
 
-        return $this->response()->success('使用【'.$type.'配置】企业微信通道发送消息失败：'.$result['message']);
+        return $this->response()->success('使用【' . $type . '配置】企业微信通道发送消息失败：' . $result['message']);
     }
 }

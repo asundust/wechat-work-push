@@ -2,6 +2,8 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 ======
 > 无需公众号，不需要安装企业微信客户端，低成本推送消息解决方案
 
+> 另有 [Dcat-Admin版](https://github.com/asundust/dcat-wechat-work-push)
+
 ![StyleCI build status](https://github.styleci.io/repos/337583331/shield)
 
 <a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/dt/asundust/wechat-work-push" alt="Total Downloads"></a>
@@ -87,7 +89,7 @@ php artisan admin:import wechat-work-push
 
 ![申请企业微信](https://user-images.githubusercontent.com/6573979/107605784-230a9d80-6c6f-11eb-87b0-b5ca2119ca2f.png)
 
-- 注册成功后，点【管理企业】进入管理界面，选择【应用管理】-【自建】-【创建应用】。
+- 注册成功后，点【管理企业】进入管理界面，选择【[应用管理](https://work.weixin.qq.com/wework_admin/frame#apps)】-【自建】-【创建应用】。
 
 ![创建应用](https://user-images.githubusercontent.com/6573979/107605802-3453aa00-6c6f-11eb-94de-97b5044bd09d.png)
 
@@ -97,7 +99,7 @@ php artisan admin:import wechat-work-push
 
 - 创建好后复制【AgentId】和【Secret】出来到网站后台的【企业微信应用消息】-【默认配置】填写对应的那一栏上。
 
-- 进入【我的企业】页面，拉到最下边，可以看到企业ID，复制并填到对应那一栏上，记得保存。
+- 进入【[我的企业](https://work.weixin.qq.com/wework_admin/frame#profile)】页面，拉到最下边，可以看到企业ID，复制并填到对应那一栏上，记得保存。
 
 ![企业ID](https://user-images.githubusercontent.com/6573979/107605805-3584d700-6c6f-11eb-8a30-cabfc306ea33.png)
 
@@ -105,7 +107,8 @@ php artisan admin:import wechat-work-push
 
 - 在列表可以发送测试消息，如果企业微信接收到了消息就成功了。
 
-- 进入【我的企业】-【微信插件】，拉到下边扫描二维码，关注以后即可收到推送的消息（可能需要先下载一次企业微信绑定一下微信），此时企业微信和微信应该能同时收到消息。
+- 进入【我的企业】-【[微信插件](https://work.weixin.qq.com/wework_admin/frame#profile/wxPlugin)】，
+  拉到下边扫描二维码，关注以后即可收到推送的消息（可能需要先下载一次企业微信绑定一下微信），此时企业微信和微信应该能同时收到消息。
 
 ![二维码](https://user-images.githubusercontent.com/6573979/107605807-361d6d80-6c6f-11eb-9f97-96da63a5741a.png)
 
@@ -119,18 +122,24 @@ php artisan admin:import wechat-work-push
 >
 > 这边关于消息通知的设置教程有误，如有问题请联系我。
 
-> 如果遇到问题的话可以到刚刚创建的应用里发个测试消息（选择【应用管理】-【自建】-【应用名称】-【功能】-【发送消息】）。
+> 如果遇到问题的话可以到刚刚创建的应用里发个测试消息（选择【[应用管理](https://work.weixin.qq.com/wework_admin/frame#apps)】-【自建】-【应用名称】-【功能】-【发送消息】）。
+
+> 另外如果出现接口请求正常，企业微信接受消息正常，个人微信无法收到消息的情况
+>
+> 进入【我的企业】-【[微信插件](https://work.weixin.qq.com/wework_admin/frame#profile/wxPlugin)】，拉到最下方，勾选【允许成员在微信插件中接收和回复聊天消息 】
+>
+> 另外检查一下上述的【仅在企业微信中接收消息】相关设置
 
 ## 使用
 
 - 默认路由支持`get`和`post`，记得在`VerifyCsrfToken`里的`except`添加`push/*`，以便支持`post`接口请求。
 
 - 接口地址为`http://{www.abc.com}/push/{推送密钥}`，标题为`title`不可空，内容为`content`可不传，链接为`url`可不传，链接标题为`url_title`可不传。 示例：`get`
-  地址为`http://{www.abc.com}/push/secretSecret?title=测试标题&content=测试内容&url=https://www.baidu.com&url_title=我是百度的测试链接`
+  地址为`http://{www.abc.com}/push/我是密钥?title=测试标题&content=测试内容&url=https://www.baidu.com&url_title=我是百度的测试链接`
 
 - 传入不合法的`url`可能会导致发送请求超时，不知为何，建议自行测试。
 
 ## 内部调用支持
 
-- 引用此Trait类`\Asundust\WechatWorkPush\Http\Traits\SendMessageTrait`。
+- 引用此Trait类`\Asundust\WechatWorkPush\Http\Traits\WechatWorkPushSendMessageTrait`。
 - 使用默认配置发送`defaultSend()`，使用自定配置发送`send()`，具体入参看方法。

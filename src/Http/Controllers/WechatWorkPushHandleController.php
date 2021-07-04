@@ -2,7 +2,7 @@
 
 namespace Asundust\WechatWorkPush\Http\Controllers;
 
-use Asundust\WechatWorkPush\Http\Traits\SendMessageTrait;
+use Asundust\WechatWorkPush\Http\Traits\WechatWorkPushSendMessageTrait;
 use Asundust\WechatWorkPush\Models\WechatWorkPushConfig;
 use Asundust\WechatWorkPush\Models\WechatWorkPushUser;
 use Illuminate\Http\Request;
@@ -10,7 +10,7 @@ use Illuminate\Routing\Controller;
 
 class WechatWorkPushHandleController extends Controller
 {
-    use SendMessageTrait;
+    use WechatWorkPushSendMessageTrait;
 
     /**
      * @param $secret

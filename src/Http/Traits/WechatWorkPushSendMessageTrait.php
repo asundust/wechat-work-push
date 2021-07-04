@@ -6,12 +6,11 @@ use Asundust\WechatWorkPush\Models\WechatWorkPushConfig;
 use EasyWeChat\Factory;
 
 /**
- * Trait SendMessageTrait
+ * Trait WechatWorkPushSendMessageTrait
  *
  * @package Asundust\WechatWorkPush\Http\Traits
- * @deprecated 弃用 请使用WechatWorkPushSendMessageTrait 将在1.1.0版本移除
  */
-trait SendMessageTrait
+trait WechatWorkPushSendMessageTrait
 {
     /**
      * 使用自定配置发送消息.
