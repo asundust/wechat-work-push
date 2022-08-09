@@ -2,11 +2,12 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 ======
 > 无需公众号，不需要安装企业微信客户端，低成本推送消息解决方案
 
+> 另有 [Dcat-Admin版](https://github.com/asundust/dcat-wechat-work-push)
+
 ![StyleCI build status](https://github.styleci.io/repos/337583331/shield)
 <a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/dt/asundust/wechat-work-push" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/v/asundust/wechat-work-push" alt="Latest Stable Version"></a>
 
-> 另有 [Dcat-Admin版](https://github.com/asundust/dcat-wechat-work-push)
 
 ## 前言
 
