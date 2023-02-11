@@ -24,8 +24,6 @@ class WechatWorkPushUserController extends AdminController
 
     /**
      * Make a grid builder.
-     *
-     * @return Grid
      */
     protected function grid(): Grid
     {
@@ -100,8 +98,6 @@ class WechatWorkPushUserController extends AdminController
 
     /**
      * Make a form builder.
-     *
-     * @return Form
      */
     protected function form(): Form
     {

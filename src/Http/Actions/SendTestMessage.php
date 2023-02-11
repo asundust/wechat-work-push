@@ -14,8 +14,6 @@ class SendTestMessage extends RowAction
     public $name = '发送测试消息';
 
     /**
-     * @param WechatWorkPushUserModel $user
-     * @return \Encore\Admin\Actions\Response
      * @throws \EasyWeChat\Kernel\Exceptions\BadResponseException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
