@@ -10,6 +10,7 @@ class WechatWorkPush extends Extension
 
     /**
      * {@inheritdoc}
+     * @throws \Exception
      */
     public static function import()
     {

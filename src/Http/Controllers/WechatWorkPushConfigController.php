@@ -13,9 +13,10 @@ use Illuminate\Routing\Controller;
 class WechatWorkPushConfigController extends Controller
 {
     /**
+     * @param Content $content
      * @return Content
      */
-    public function index(Content $content)
+    public function index(Content $content): Content
     {
         return $content
             ->title('企业微信应用消息')
@@ -34,9 +35,10 @@ class WechatWorkPushConfigController extends Controller
     }
 
     /**
-     * @return \Illuminate\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function update(Request $request)
+    public function update(Request $request): \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse|\Illuminate\Contracts\Foundation\Application
     {
         $data = [
             'corp_id' => $request->input('corp_id'),

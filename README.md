@@ -5,9 +5,9 @@ Laravel-Admin 消息推送插件 by 企业微信应用消息
 > 另有 [Dcat-Admin版](https://github.com/asundust/dcat-wechat-work-push)
 
 ![StyleCI build status](https://github.styleci.io/repos/337583331/shield)
+
 <a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/dt/asundust/wechat-work-push" alt="Total Downloads"></a>
 <a href="https://packagist.org/packages/asundust/wechat-work-push"><img src="https://img.shields.io/packagist/v/asundust/wechat-work-push" alt="Latest Stable Version"></a>
-
 
 ## 前言
 
@@ -143,6 +143,9 @@ php artisan admin:import wechat-work-push
 
 - 引用此Trait类`\Asundust\WechatWorkPush\Http\Traits\WechatWorkPushSendMessageTrait`。
 - 使用默认配置发送`defaultSend()`，使用自定配置发送`send()`，具体入参看方法。
+
+## 未来
+- 将开发新包用于支持多个渠道的消息发送
 
 ## 支持
 

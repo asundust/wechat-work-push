@@ -14,12 +14,17 @@ class SendTestMessage extends RowAction
     public $name = '发送测试消息';
 
     /**
+     * @param WechatWorkPushUserModel $user
      * @return \Encore\Admin\Actions\Response
-     *
+     * @throws \EasyWeChat\Kernel\Exceptions\BadResponseException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
-     * @throws \EasyWeChat\Kernel\Exceptions\RuntimeException
+     * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\DecodingExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\RedirectionExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\ServerExceptionInterface
+     * @throws \Symfony\Contracts\HttpClient\Exception\TransportExceptionInterface
      */
-    public function handle(WechatWorkPushUserModel $user)
+    public function handle(WechatWorkPushUserModel $user): \Encore\Admin\Actions\Response
     {
         if ($user->is_own_wechat_work) {
             $config = [

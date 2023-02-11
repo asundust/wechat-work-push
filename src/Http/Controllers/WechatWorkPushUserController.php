@@ -27,7 +27,7 @@ class WechatWorkPushUserController extends AdminController
      *
      * @return Grid
      */
-    protected function grid()
+    protected function grid(): Grid
     {
         $grid = new Grid(new WechatWorkPushUser());
 
@@ -37,6 +37,7 @@ class WechatWorkPushUserController extends AdminController
             return '***';
         })->copyable();
         $grid->column('api_address', '推送Api地址')->display(function () {
+            /* @var WechatWorkPushUser $this */
             return $this->api_address_show;
         })->copyable();
         $grid->column('status', '账号状态')->switch(WechatWorkPushUser::STATES_SWITCH);
@@ -61,9 +62,9 @@ class WechatWorkPushUserController extends AdminController
                 $filter->where(function (Builder $builder) {
                     switch ($this->input) {
                         case 0:
-                            $builder->whereNotNull('corp_id')
-                                ->orwhereNotNull('agent_id')
-                                ->orwhereNotNull('secret');
+                            $builder->whereNull('corp_id')
+                                ->orwhereNull('agent_id')
+                                ->orwhereNull('secret');
                             break;
                         case 1:
                             $builder->whereNotNull('corp_id')
@@ -84,10 +85,11 @@ class WechatWorkPushUserController extends AdminController
         });
 
         $grid->model()->collection(function (Collection $collection) {
+            /* @var WechatWorkPushUser $user */
             foreach ($collection as $user) {
-                $user->is_own_wechat_work = $user->is_own_wechat_work;
-                $user->api_address_show = config('app.url').'/push/***';
-                $user->api_address = config('app.url').'/push/'.$user->sc_secret.'?title=我是标题&content=我是内容(可不填)';
+                $user['is_own_wechat_work'] = $user->is_own_wechat_work;
+                $user['api_address_show'] = $user->api_address_show;
+                $user['api_address'] = $user->api_address;
             }
 
             return $collection;
@@ -101,16 +103,19 @@ class WechatWorkPushUserController extends AdminController
      *
      * @return Form
      */
-    protected function form()
+    protected function form(): Form
     {
         $form = new Form(new WechatWorkPushUser());
 
+        $table = (new WechatWorkPushUser())->getTable();
         $form->text('name', '推送账号')
             ->rules('required')
             ->help('后台的话【通讯录】-【企业名字】-【点击账号进入详情】-【账号】；如果要发送给全部人员请填写【@all】');
         $form->text('sc_secret', '账号推送密钥')
             ->default(strtolower(Str::random(32)))
             ->rules('required')
+            ->creationRules(['required', "unique:$table"])
+            ->updateRules(['required', "unique:$table,sc_secret,{{id}}"])
             ->help('推送消息的唯一密钥');
         $form->switch('status', '账号状态')
             ->states(WechatWorkPushUser::STATES_SWITCH)
@@ -121,8 +126,6 @@ class WechatWorkPushUserController extends AdminController
             ->help('推送不是走自己的企业微信可为空');
         $form->password('secret', '自定应用Secret')
             ->help('推送不是走自己的企业微信可为空');
-
-        // todo 推送密钥唯一处理
 
         $form->disableViewCheck();
 

@@ -1,40 +1,40 @@
 {
-  "name": "asundust/wechat-work-push",
-  "description": "利用企业微信应用消息向微信发送通知(无需公众号，不需要安装企业微信客户端，低成本推送消息解决方案)",
-  "type": "library",
-  "keywords": [
-    "laravel-admin",
-    "extension",
-    "wechat",
-    "work",
-    "push"
-  ],
-  "homepage": "https://github.com/asundust/wechat-work-push",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "asundust",
-      "email": "asundust@qq.com"
+    "name": "asundust/wechat-work-push",
+    "description": "利用企业微信应用消息向微信发送通知(无需公众号，不需要安装企业微信客户端，低成本推送消息解决方案)",
+    "type": "library",
+    "keywords": [
+        "laravel-admin",
+        "extension",
+        "wechat",
+        "work",
+        "push"
+    ],
+    "homepage": "https://github.com/asundust/wechat-work-push",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "asundust",
+            "email": "asundust@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.2",
+        "encore/laravel-admin": "^1.6",
+        "w7corp/easywechat": "^6.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Asundust\\WechatWorkPush\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Asundust\\WechatWorkPush\\WechatWorkPushServiceProvider"
+            ]
+        }
     }
-  ],
-  "require": {
-    "php": ">=7.0.0",
-    "encore/laravel-admin": "~1.6",
-    "overtrue/wechat": "4.*||5.*"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "~6.0"
-  },
-  "autoload": {
-    "psr-4": {
-      "Asundust\\WechatWorkPush\\": "src/"
-    }
-  },
-  "extra": {
-    "laravel": {
-      "providers": [
-        "Asundust\\WechatWorkPush\\WechatWorkPushServiceProvider"
-      ]
-    }
-  }
 }
