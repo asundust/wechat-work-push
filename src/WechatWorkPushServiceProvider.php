@@ -8,7 +8,6 @@ use Illuminate\Support\ServiceProvider;
 class WechatWorkPushServiceProvider extends ServiceProvider
 {
     /**
-     * @param WechatWorkPush $extension
      * @return void
      */
     public function boot(WechatWorkPush $extension)

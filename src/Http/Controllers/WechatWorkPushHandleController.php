@@ -14,8 +14,7 @@ class WechatWorkPushHandleController extends Controller
 
     /**
      * @param $secret
-     * @param Request $request
-     * @return array
+     *
      * @throws \EasyWeChat\Kernel\Exceptions\BadResponseException
      * @throws \EasyWeChat\Kernel\Exceptions\InvalidArgumentException
      * @throws \Symfony\Contracts\HttpClient\Exception\ClientExceptionInterface
