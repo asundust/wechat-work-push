@@ -33,10 +33,10 @@ trait WechatWorkPushSendMessageTrait
     {
         $message = $title;
         if ($content) {
-            $message .= "\n\n".$content;
+            $message .= "\n\n" . $content;
         }
         if ($url) {
-            $message .= "\n\n".'<a href="'.$url.'">'.($urlTitle ?: $url).'</a>';
+            $message .= "\n\n" . '<a href="' . $url . '">' . ($urlTitle ?: $url) . '</a>';
         }
         $app = new Application($config);
         $api = $app->getClient();

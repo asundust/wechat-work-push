@@ -29,17 +29,17 @@ class WechatWorkPushUser extends Model
 {
     protected $fillable = ['name', 'sc_secret', 'status', 'corp_id', 'agent_id', 'secret'];
 
-    const STATES = [
+    public const STATES = [
         0 => '禁用',
         1 => '启用',
     ];
 
-    const IS_OWN_WECHAT_WORK = [
+    public const IS_OWN_WECHAT_WORK = [
         0 => '否',
         1 => '是',
     ];
 
-    const STATES_SWITCH = [
+    public const STATES_SWITCH = [
         'on' => ['value' => 1, 'text' => '启用', 'color' => 'success'],
         'off' => ['value' => 0, 'text' => '禁用', 'color' => 'danger'],
     ];
@@ -65,12 +65,12 @@ class WechatWorkPushUser extends Model
     // api_address_show
     public function getApiAddressShowAttribute(): string
     {
-        return config('app.url').'/push/***';
+        return config('app.url') . '/push/***';
     }
 
     // api_address
     public function getApiAddressAttribute(): string
     {
-        return config('app.url').'/push/'.$this->sc_secret.'?title=我是标题&content=我是内容(可不填)&url=我是链接(可不填)&url_title=链接标题(可不填)';
+        return config('app.url') . '/push/' . $this->sc_secret . '?title=我是标题&content=我是内容(可不填)&url=我是链接(可不填)&url_title=链接标题(可不填)';
     }
 }
